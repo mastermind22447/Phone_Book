@@ -1,6 +1,6 @@
 package com.demo.phonebook.contact;
 
-import jakarta.validation.Valid;
+//import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +18,11 @@ public class ContactController  {
 
     @GetMapping
     List<Contact> getContacts() {
-        return contactService.getContacts();}
+        return contactService.getContacts();
+    }
 
     @PostMapping
-    void addContact(@RequestBody @Valid ContactDto contactDto) {
+    void addContact(@RequestBody  ContactDto contactDto) {
 
         contactService.addContact(contactDto);
     }
@@ -32,7 +33,7 @@ public class ContactController  {
     }
 
     @GetMapping("/phone/{phoneNumber}")
-    Contact getContactByPhoneNumber(@PathVariable String phoneNumber) {
+    Contact getContactByPhoneNumber(@PathVariable  String phoneNumber) {
 
         return contactService.getContactByPhoneNumber(phoneNumber);
     }
