@@ -39,7 +39,11 @@ public class ContactService {
         Contact contact = new Contact(
                 contactDto.name(),
                 contactDto.email(),
-                contactDto.phoneNumber()
+                contactDto.phoneNumber(),
+                contactDto.dob(),
+                contactDto.company(),
+                contactDto.job_title()
+
         );
         this.contactRepository.save(contact);
     }
@@ -53,6 +57,10 @@ public class ContactService {
         oldContact.setName(contactDto.name());
         oldContact.setEmail(contactDto.email());
         oldContact.setPhoneNumber(contactDto.phoneNumber());
+        oldContact.setDob(contactDto.dob());
+        oldContact.setCompany(contactDto.company());
+        oldContact.setJob_title(contactDto.job_title());
+
     }
 
     public void deleteContact(Long contactId) {

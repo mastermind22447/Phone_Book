@@ -3,6 +3,8 @@ package com.demo.phonebook.contact;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 
+import java.time.LocalDate;
+
 
 @Entity(name = "Contact")
 @Table(name = "contact")
@@ -42,21 +44,44 @@ public class Contact {
     )
     private String phoneNumber;
 
+
+    private LocalDate dob;
+
+    @Column
+    private String company;
+
+    @Column
+    private String job_title;
+
+
+
+
+
     public Contact(){
 
     }
 
-    public Contact(String name, String email, String phoneNumber){
+
+
+
+
+    public Contact(String name, String email, String phoneNumber, LocalDate dob, String company, String job_title){
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.dob = dob;
+        this.company = company;
+        this.job_title = job_title;
     }
 
-    public Contact(Long id, String name, String email, String phoneNumber) {
+    public Contact(Long id, String name, String email, String phoneNumber, LocalDate dob, String company, String job_title) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.dob = dob;
+        this.company = company;
+        this.job_title = job_title;
     }
 
     public void setId(Long id) {
@@ -75,6 +100,18 @@ public class Contact {
         this.phoneNumber = phoneNumber;
     }
 
+    public void setDob(LocalDate dob) {
+        this.dob = dob;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setJob_title(String job_title) {
+        this.job_title = job_title;
+    }
+
     public Long getId() {
         return id;
     }
@@ -91,6 +128,20 @@ public class Contact {
         return phoneNumber;
     }
 
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public String getJob_title() {
+        return job_title;
+    }
+
+
+
     @Override
     public String toString() {
         return "Contact{" +
@@ -98,6 +149,9 @@ public class Contact {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
+                ", dob=" + dob +
+                ", company='" + company + '\'' +
+                ", job_title='" + job_title + '\'' +
                 '}';
     }
 }

@@ -2,6 +2,7 @@ package com.demo.phonebook.contact;
 
 import jakarta.validation.constraints.*;
 
+import java.time.LocalDate;
 
 
 public record ContactDto(
@@ -11,7 +12,10 @@ public record ContactDto(
         @Email
         String email,
         @NotBlank
-        String phoneNumber
+        String phoneNumber,
+        LocalDate dob,
+        String company,
+        String job_title
 
 ) {
 }
