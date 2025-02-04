@@ -1,5 +1,6 @@
-package com.demo.phonebook.contact;
+package com.demo.phonebook.contact.repository;
 
+import com.demo.phonebook.contact.entity.Contact;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -13,11 +14,10 @@ import java.util.Optional;
 public interface ContactRepository extends JpaRepository<Contact, Long> {
 
     Optional<Contact> findByEmail(String email);
-    @Query(value = "SELECT c FROM Contact c WHERE c.name = ?1 AND c.email = ?2")
-    List<Contact> findAllByNameAndEmail(String email);
-
 
     Optional<Contact> findByPhoneNumber(String phoneNumber);
-    @Query(value = "SELECT c FROM Contact c WHERE c.name = ?1 AND c.phoneNumber = ?2")
-    List<Contact> findAllByNameAndPhoneNumber(String phoneNumber);
+
+    boolean existsByEmail(String email);  // ✅ Check if email exists
+
+    boolean existsByPhoneNumber(String phoneNumber);  // ✅ Check if phone number exists
 }
