@@ -58,7 +58,6 @@ public class ContactService {
                         new Object[]{contactId},LocaleContextHolder.getLocale()))
                 );
 
-        existingContact.setName(contactDto.name());
         if (contactRepository.existsByEmail(contactDto.email()) && !existingContact.getEmail()
                 .equals(contactDto.email())) {
             throw new IllegalArgumentException(messageSource.getMessage("error.duplicate.email",
@@ -71,6 +70,10 @@ public class ContactService {
                     new Object[]{contactDto.phoneNumber()},LocaleContextHolder.getLocale())
             );
         }
+
+        existingContact.setName(contactDto.name());
+        existingContact.setEmail(contactDto.email());
+        existingContact.setPhoneNumber(contactDto.phoneNumber());
         existingContact.setDob(contactDto.dob());
         existingContact.setCompany(contactDto.company());
         existingContact.setJob_title(contactDto.job_title());
